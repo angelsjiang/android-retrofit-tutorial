@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }
+
         MovieApiService movieApiService = retrofit.create(MovieApiService.class);
         Call<Movie> call = movieApiService.getMovie(603, API_KEY);
         call.enqueue(new Callback<Movie>() {

@@ -9,12 +9,14 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.ViewHolder> {
-    private List<TopRatedResponse> data;
+    private TopRatedResponse data;
 
-    MovieListAdapter(List<TopRatedResponse> data) { this.data = data; }
+    MovieListAdapter(TopRatedResponse data) { this.data = data; }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView img;
@@ -42,16 +44,18 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.View
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
-        List<TopRatedResponse> movies = data;
-//        viewHolder.img.setImageResource(data.getPosterPath());
-        viewHolder.tvTitle.setText(data.get(position).getMvTitle());
-        viewHolder.tvReleaseDate.setText(data.get(position).getReleaseDate());
-        viewHolder.tvVote.setText(data.get(position).getVoteAverage().toString());
-        viewHolder.tvOverview.setText(data.get(position).getOverview());
+        TopRatedResponse movies = data;
+        Picasso.get().load("http://i.imgur.com/DvpvklR.png").into(viewHolder.img);
+
+//        viewHolder.img.setImageResource("https://image.tmdb.org/t/p/w500", data.topRateMovies.get(position).getPosterPath());
+        viewHolder.tvTitle.setText(data.topRateMovies.get(position).getTitle());
+        viewHolder.tvReleaseDate.setText(data.topRateMovies.get(position).getReleaseDate());
+        viewHolder.tvVote.setText(data.topRateMovies.get(position).getVoteAverage().toString());
+        viewHolder.tvOverview.setText(data.topRateMovies.get(position).getOverview());
     }
 
     @Override
-    public int getItemCount() { return data.size(); }
+    public int getItemCount() { return data.topRateMovies.size(); }
 
 
 }

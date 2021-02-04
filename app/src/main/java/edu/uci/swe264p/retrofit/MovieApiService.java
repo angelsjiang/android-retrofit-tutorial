@@ -1,5 +1,7 @@
 package edu.uci.swe264p.retrofit;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -9,7 +11,7 @@ public interface MovieApiService {
     @GET("movie/{id}")
     Call<Movie> getMovie(@Path("id") int id, @Query("api_key") String apiKey);
 
-//    @GET("movie/{page}")
-//    Call<Movie> getListOfMovie(@Path("id") int id, @Query("api_key") String apiKey);
+    @GET("movie/top_rated")
+    Call<TopRatedResponse> getListOfMovie(@Query("api_key") String apiKey);
 
 }
