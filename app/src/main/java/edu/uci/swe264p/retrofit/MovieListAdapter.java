@@ -45,7 +45,7 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.View
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
         TopRatedResponse movies = data;
-        Picasso.get().load("http://i.imgur.com/DvpvklR.png").into(viewHolder.img);
+        Picasso.get().load("https://image.tmdb.org/t/p/w500" + data.topRateMovies.get(position).getPosterPath()).into(viewHolder.img);
 
 //        viewHolder.img.setImageResource("https://image.tmdb.org/t/p/w500", data.topRateMovies.get(position).getPosterPath());
         viewHolder.tvTitle.setText(data.topRateMovies.get(position).getTitle());
